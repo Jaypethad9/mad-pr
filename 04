@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+tools:context=".MainActivity">
+<RadioGroup
+android:id="@+id/radioGroup"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content">
+<RadioButton
+android:id="@+id/radioButtonOption1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Option 1"
+android:checked="true"/>
+<RadioButton
+android:id="@+id/radioButtonOption2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Option 2"/>
+<RadioButton
+android:id="@+id/radioButtonOption3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Option 3"/>
+</RadioGroup>
+<Button
+android:id="@+id/buttonSubmit"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Submit"
+android:layout_below="@id/radioGroup"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="16dp"/>
+</RelativeLayout>
+
+
+
+
+package com.example.madpractical12;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+// Initialize RadioGroup and Button
+RadioGroup radioGroup = findViewById(R.id.radioGroup);
+Button submitButton = findViewById(R.id.buttonSubmit);
+// Set OnClickListener for the submit button
+submitButton.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+// Get the selected RadioButton's text
+int selectedRadioButtonId =
+radioGroup.getCheckedRadioButtonId();
+RadioButton selectedRadioButton =
+findViewById(selectedRadioButtonId);
+String selectedOption =
+selectedRadioButton.getText().toString();
+// Display a toast message with the selected option
+Toast.makeText(MainActivity.this, "Selected option: " +
+selectedOption, Toast.LENGTH_SHORT).show();
+}
+});
+}
+}
