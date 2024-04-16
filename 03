@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:orientation="vertical">
+<TextView
+android:id="@+id/textView2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="50dp"
+android:layout_marginLeft="50dp"
+android:textSize="18dp"
+android:text="Enter Country" />
+<AutoCompleteTextView
+android:id="@+id/autoCompleteTextView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginLeft="50dp"
+android:ems="10"/>
+</LinearLayout>
+package com.example.madautocomlpletetextviewexcercise;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+public class MainActivity extends AppCompatActivity {
+String[] arr = { "France","United
+States","Brazil","Italy","India","Canada","Egypt","Australia","Holland"};
+AutoCompleteTextView autocomplete;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+autocomplete = findViewById(R.id.autoCompleteTextView1);
+ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+android.R.layout.select_dialog_item, arr);
+autocomplete.setThreshold(1);
+autocomplete.setAdapter(adapter);
+}
+}
